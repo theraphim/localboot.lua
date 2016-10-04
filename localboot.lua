@@ -46,17 +46,25 @@ function chain()
   end
 end
 
+function trim(s)
+  if (s) then
+    return string.gsub(s, "^%s*", "")
+  end
+end
+
 if(dmi.supported())
 then
   -- DMI supported
   dmitable = dmi.gettable()
   if (dmitable.system) then
     --[[ PXELINUX 6 ]]--
-    sm = dmitable.system.manufacturer
-    sv = dmitable.system.version
-    sp = dmitable.system.product_name
-    bm = dmitable.base_board.manufacturer
-    bp = dmitable.base_board.product_name
+    sm = trim(dmitable.system.manufacturer)
+    sv = trim(dmitable.system.version)
+    sp = trim(dmitable.system.product_name)
+    if (dmitable.base_board) then
+      bm = trim(dmitable.base_board.manufacturer)
+      bp = trim(dmitable.base_board.product_name)
+    end
   else
     --[[ PXELINUX 4 ]]--
     sm = dmitable["system.manufacturer"]
@@ -114,16 +122,10 @@ then
     elseif (sp == "Veriton M290") then chain()
     -- Acer Veriton N4620G (Desktop PC)
     elseif (sp == "Veriton N4620G") then chain()
-    end
-  elseif (sm == "Acer            ") then
-    if (false) then
     -- Acer Aspire One D255 (Notebook)
-    elseif (sp == "AOD255          ") then chain()
+    elseif (sp == "AOD255") then chain()
     -- Acer TravelMate 5740 (Notebook)
-    elseif (sp == "TravelMate 5740 ") then chain()
-    end
-  elseif (sm == "Acer                  ") then
-    if (false) then
+    elseif (sp == "TravelMate 5740") then chain()
     -- Acer Veriton L460 (Desktop PC)
     elseif (sp == "Veriton L460") then chain()
     end
@@ -189,10 +191,10 @@ then
     end
 
   -- eMachines
-  elseif (sm == "eMachines ") then
+  elseif (sm == "eMachines") then
     if (false) then
     -- eMachines 725 (Notebook)
-    elseif (sp == "eMachines E725 ") then chain()
+    elseif (sp == "eMachines E725") then chain()
     end
 
   -- Fujitsu
@@ -205,10 +207,10 @@ then
     -- Fujitsu Esprimo Mobile V5535 (Notebook)
     elseif (sp == "ESPRIMO Mobile V5535") then chain()
     end
-  elseif (sm == "FUJITSU                         ") then
+  elseif (sm == "FUJITSU") then
     if (false) then
     -- Fujitsu Esprimo P5731 (Desktop PC)
-    elseif (sp == "ESPRIMO P5731                 ") then chain()
+    elseif (sp == "ESPRIMO P5731") then chain()
     end
   elseif (sm == "FUJITSU") then
     if (false) then
@@ -243,9 +245,9 @@ then
   elseif (sm == "Hewlett-Packard") then
     if (false) then
     -- HP 630 (Notebook)
-    elseif (sp == "HP 630 Notebook PC              ") then chain()
+    elseif (sp == "HP 630 Notebook PC") then chain()
     -- HP 635 (Notebook)
-    elseif (sp == "HP 635 Notebook PC              ") then chain()
+    elseif (sp == "HP 635 Notebook PC") then chain()
     -- HP 650 (Notebook)
     elseif (sp == "HP 650 Notebook PC") then chain()
     -- HP 655 (Notebook)
@@ -259,7 +261,7 @@ then
     -- HP EliteBook 6930p (Notebook)
     elseif (sp == "HP EliteBook 6930p") then chain()
     -- HP Pavilion g6 (Notebook)
-    elseif (sp == "HP Pavilion g6 Notebook PC      ") then chain()
+    elseif (sp == "HP Pavilion g6 Notebook PC") then chain()
     end
 
   -- Lenovo
@@ -268,7 +270,7 @@ then
     -- Lenovo B580 (Notebook)
     elseif (sv == "Lenovo B580") then chain()
     -- Lenovo Ideapad S10-2 (Notebook)
-    elseif (sv == "Lenovo IdeaPad S10-2            ") then chain()
+    elseif (sv == "Lenovo IdeaPad S10-2") then chain()
     -- Lenovo ThinkCentre E73 (Desktop PC)
     elseif (sv == "ThinkCentre E73") then chain()
     -- Lenovo ThinkCentre Edge72 (Desktop PC)
