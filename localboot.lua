@@ -34,7 +34,7 @@ function chain()
   print("localboot.lua: chainloading")
   if (syslinux.derivative() == "PXELINUX") then
     -- PXELINUX; assume the first hard disk is hd0.
-    syslinux.run_command("chain.c32 hd0")
+    syslinux.run_kernel_image("chain.c32", "hd0", 0, 7)
   else
     -- ISOLINUX/SYSLIUNX; assume we're running from a USB stick hd0, and hd1 is
     -- the first hard disk.
@@ -146,6 +146,7 @@ then
     end
   elseif (bm == "ASUSTeK COMPUTER INC.") then
     if (false) then
+    elseif (bp == "H170-PRO") then chain()
     -- ASUS B85M-E (Mainboard)
     elseif (bp == "B85M-E") then chain()
     -- ASUS B85M-G (Mainboard)

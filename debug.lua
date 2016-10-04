@@ -1,6 +1,12 @@
 local dmi = require "dmi"
 local syslinux = require "syslinux"
 
+function trim(s)
+  if (s) then
+    return string.gsub(s, "^%s*", "")
+  end
+end
+
 function printdmi(cat, var)
   if (current_cat ~= cat)
   then
@@ -12,7 +18,7 @@ function printdmi(cat, var)
 
   if (dmitable[cat]) then
     -- PXELINUX 6
-    val = dmitable[cat][var]
+    val = trim(dmitable[cat][var])
   else
     -- PXELINUX 4
     val = dmitable[cat .. "." .. var]
