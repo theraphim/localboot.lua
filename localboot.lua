@@ -65,286 +65,45 @@ then
       bm = trim(dmitable.base_board.manufacturer)
       bp = trim(dmitable.base_board.product_name)
     end
-  else
-    --[[ PXELINUX 4 ]]--
-    sm = dmitable["system.manufacturer"]
-    sv = dmitable["system.version"]
-    sp = dmitable["system.product_name"]
-    bm = dmitable["base_board.manufacturer"]
-    bp = dmitable["base_board.product_name"]
   end
 
-  -- hack so that every line that follows begins with "elseif"
-  if (false) then
+syst = { 
+["Acer"] = { "Aspire 3750", "Aspire 3810T",  "Aspire 5820TG", "ASE571/AST671", "Aspire One 753", "AOA150", "Aspire XC600", "Revo 70", "TravelMate 5735Z", "Calpella", "TravelMate 5742", "TravelMate 5744", "TravelMate 5760G", "TravelMate 5760", "TravelMate 8571", "TravelMate P653-M", "AO531h", "Veriton E430G", "Veriton M2610G", "Veriton M290", "Veriton N4620G", "AOD255", "TravelMate 5740", "Veriton L460"},
+["ASUSTeK Computer INC."] = {"A8N-VM T-System-CSM", "M2N-VM DVI", "M2N-VM SE", "M4N68T-M-LE-V2", "M5A78L-M LX"},
+["ASUSTeK COMPUTER INC."] = {"H170-PRO", "B85M-E", "B85M-G", "H81M2", "H81M-K"},
+["ASUS"] = {"H81M-PLUS"},
+["bluechip Computer AG"] = {"B85M-E"},
+["Compaq"] = {"Evo D510 SFF"},
+["Dell Inc."] = {"Latitude E5520", "OptiPlex 3020", "OptiPlex 390", "OptiPlex 790", "OptiPlex 990"},
+["eMachines"] = {"eMachines E725"},
+["FUJITSU SIEMENS"] = {"ESPRIMO E", "ESPRIMO Mobile D9510", "ESPRIMO Mobile V5535"},
+["FUJITSU"] = {"ESPRIMO P5731", "ESPRIMO P910", "ESPRIMO Q510", "LIFEBOOK A512", "LIFEBOOK A530", "LIFEBOOK A531", "LIFEBOOK A532", "LIFEBOOK P702"},
+["Gigabyte Technology Co., Ltd."] = {"B75M-D3H", "EP31-DS3L", "H81M-D2W"},
+["Hewlett-Packard"] = {"HP 630 Notebook PC", "HP 635 Notebook PC", "HP 650 Notebook PC", "HP 655 Notebook PC", "Compaq 610", "HP d530 SFF(DC578AV)", "HP d530 SFF(DG781A)", "HP EliteBook 6930p", "HP Pavilion g6 Notebook PC"},
+["LENOVO"] = {"Lenovo B580", "Lenovo IdeaPad S10-2", "ThinkCentre E73", "ThinkCentre Edge72", "ThinkCentre M57", "ThinkCentre M72e", "ThinkCentre M73", "ThinkCentre M81", "5049", "ThinkCentre M82", "2697", "2697B63", "2929", "ThinkCentre M83", "10AH", "ThinkCentre M92", "ThinkCentre M93", "ThinkCentre M93p", "ThinkPad E520", "ThinkPad T520"},
+["SAMSUNG ELECTRONICS CO., LTD."]= {"300E4A/300E5A/300E7A/3430EA/3530EA"},
+["TOSHIBA"] = {"Satellite L300D", "Satellite Pro C660", "SATELLITE PRO C850-1HL", "Satellite Pro C850-1K0"}}
 
-  -- Acer
-  elseif (sm == "Acer") then
-    if (false) then
-    -- Acer Aspire 3750 (Notebook)
-    elseif (sp == "Aspire 3750") then chain()
-    -- Acer Aspire 3810T (Notebook)
-    elseif (sp == "Aspire 3810T") then chain()
-    -- Acer Aspire 5820TG (Notebook)
-    elseif (sp == "Aspire 5820TG") then chain()
-    -- Acer Aspire ASE571/AST671 (Notebook)
-    elseif (sp == "ASE571/AST671") then chain()
-    -- Acer Aspire One 753 (Notebook)
-    elseif (sp == "Aspire One 753") then chain()
-    -- Acer Aspire One AOA150 (Notebook)
-    elseif (sp == "AOA150") then chain()
-    -- Acer Aspire XC600 (Notebook)
-    elseif (sp == "Aspire XC600") then chain()
-    -- Acer Revo 70 (Desktop PC)
-    elseif (sp == "Revo 70") then chain()
-    -- Acer TravelMate 5735Z (Notebook)
-    elseif (sp == "TravelMate 5735Z") then chain()
-    -- Acer TravelMate 5740-332G25Mn (Notebook)
-    elseif (sp == "Calpella") then chain()
-    -- Acer TravelMate 5742 (Notebook)
-    elseif (sp == "TravelMate 5742") then chain()
-    -- Acer TravelMate 5744 (Notebook)
-    elseif (sp == "TravelMate 5744") then chain()
-    -- Acer TravelMate 5760G (Notebook)
-    elseif (sp == "TravelMate 5760G") then chain()
-    -- Acer TravelMate 5760 (Notebook)
-    elseif (sp == "TravelMate 5760") then chain()
-    -- Acer TravelMate 8571 (Notebook)
-    elseif (sp == "TravelMate 8571") then chain()
-    -- Acer TravelMate P653-M (Notebook)
-    elseif (sp == "TravelMate P653-M") then chain()
-    -- Acer TravelMate P653-M (Notebook)
-    elseif (sp == "AO531h") then chain()
-    -- Acer Veriton E430G (Desktop-PC)
-    elseif (sp == "Veriton E430G") then chain()
-    -- Acer Veriton M2610G (Desktop PC)
-    elseif (sp == "Veriton M2610G") then chain()
-    -- Acer Veriton M290 (Desktop PC)
-    elseif (sp == "Veriton M290") then chain()
-    -- Acer Veriton N4620G (Desktop PC)
-    elseif (sp == "Veriton N4620G") then chain()
-    -- Acer Aspire One D255 (Notebook)
-    elseif (sp == "AOD255") then chain()
-    -- Acer TravelMate 5740 (Notebook)
-    elseif (sp == "TravelMate 5740") then chain()
-    -- Acer Veriton L460 (Desktop PC)
-    elseif (sp == "Veriton L460") then chain()
-    end
 
-  -- ASUS
-  elseif (bm == "ASUSTeK Computer INC.") then
-    if (false) then
-    -- ASUS A8N-VM (Mainboard)
-    elseif (bp == "A8N-VM T-System-CSM") then chain()
-    -- ASUS M2N-VM DVI (Mainboard)
-    elseif (bp == "M2N-VM DVI") then chain()
-    -- ASUS M2N-VM SE (Mainboard)
-    elseif (bp == "M2N-VM SE") then chain()
-    -- ASUS M4N68T-M-LE-V2 (Mainboard)
-    elseif (bp == "M4N68T-M-LE-V2") then chain()
-    -- ASUS M5A78L-M LX (Mainboard)
-    elseif (bp == "M5A78L-M LX") then chain()
-    end
-  elseif (bm == "ASUSTeK COMPUTER INC.") then
-    if (false) then
-    elseif (bp == "H170-PRO") then chain()
-    -- ASUS B85M-E (Mainboard)
-    elseif (bp == "B85M-E") then chain()
-    -- ASUS B85M-G (Mainboard)
-    elseif (bp == "B85M-G") then chain()
-    -- ASUS H81M2 (Mainboard)
-    elseif (bp == "H81M2") then chain()
-    -- ASUS H81M-K (Mainboard)
-    elseif (bp == "H81M-K") then chain()
-    end
-  elseif (sm == "ASUS") then
-    if (false) then
-    -- ASUS H81Mi+ (Mainboard)
-    elseif (bp == "H81M-PLUS") then chain()
-    end
 
-  -- Bluechip
-  elseif (sm == "bluechip Computer AG") then
+  if (sm == "innotek GmbH") then
     if (false) then
-    -- Bluechip BUSINESSline M ZT i3-4130 (Desktop PC)
-    elseif (bp == "B85M-E") then chain()
-    end
-
-  -- Compaq
-  elseif (sm == "Compaq") then
-    if (false) then
-    -- Compaq Evo d510 SFF (Notebook)
-    elseif (sp == "Evo D510 SFF") then chain()
-    end
-
-  -- Dell
-  elseif (sm == "Dell Inc.") then
-    if (false) then
-    -- Dell Latitude E5520 (Notebook)
-    elseif (sp == "Latitude E5520") then chain()
-    -- Dell OptiPlex 3020 (Desktop PC)
-    elseif (sp == "OptiPlex 3020") then chain()
-    -- Dell OptiPlex 390 (Desktop PC)
-    elseif (sp == "OptiPlex 390") then chain()
-    -- Dell OptiPlex 790 (Desktop PC)
-    elseif (sp == "OptiPlex 790") then chain()
-    -- Dell OptiPlex 990 (Desktop PC)
-    elseif (sp == "OptiPlex 990") then chain()
-    end
-
-  -- eMachines
-  elseif (sm == "eMachines") then
-    if (false) then
-    -- eMachines 725 (Notebook)
-    elseif (sp == "eMachines E725") then chain()
-    end
-
-  -- Fujitsu
-  elseif (sm == "FUJITSU SIEMENS") then
-    if (false) then
-    -- Fujitsu ESPRIMO E5915 (Desktop PC)
-    elseif (sp == "ESPRIMO E") then chain()
-    -- Fujitsu Esprimo Mobile D9510 (Notebook)
-    elseif (sp == "ESPRIMO Mobile D9510") then chain()
-    -- Fujitsu Esprimo Mobile V5535 (Notebook)
-    elseif (sp == "ESPRIMO Mobile V5535") then chain()
-    end
-  elseif (sm == "FUJITSU") then
-    if (false) then
-    -- Fujitsu Esprimo P5731 (Desktop PC)
-    elseif (sp == "ESPRIMO P5731") then chain()
-    end
-  elseif (sm == "FUJITSU") then
-    if (false) then
-    -- Fujitsu Esprimo P910 (Desktop PC)
-    elseif (sp == "ESPRIMO P910") then chain()
-    -- Fujitsu Esprimo Q510 (Desktop PC)
-    elseif (sp == "ESPRIMO Q510") then chain()
-    -- Fujitsu LifeBook A512 (Notebook)
-    elseif (sp == "LIFEBOOK A512") then chain()
-    -- Fujitsu LifeBook A530 (Notebook)
-    elseif (sp == "LIFEBOOK A530") then chain()
-    -- Fujitsu LifeBook A531 (Notebook)
-    elseif (sp == "LIFEBOOK A531") then chain()
-    -- Fujitsu LifeBook A532 (Notebook)
-    elseif (sp == "LIFEBOOK A532") then chain()
-    -- Fujitsu LifeBook P702 (Notebook)
-    elseif (sp == "LIFEBOOK P702") then chain()
-    end
-
-  -- Gigabyte Technology
-  elseif (bm == "Gigabyte Technology Co., Ltd.") then
-    if (false) then
-    -- Gigabyte B75M-D3H (Mainboard)
-    elseif (bp == "B75M-D3H") then chain()
-    -- Gigabyte EP31-DS3L (Mainboard)
-    elseif (bp == "EP31-DS3L") then chain()
-    -- Gigabyte Technology H81M-D2W (Mainboard)
-    elseif (bp == "H81M-D2W") then chain()
-    end
-
-  -- HP
-  elseif (sm == "Hewlett-Packard") then
-    if (false) then
-    -- HP 630 (Notebook)
-    elseif (sp == "HP 630 Notebook PC") then chain()
-    -- HP 635 (Notebook)
-    elseif (sp == "HP 635 Notebook PC") then chain()
-    -- HP 650 (Notebook)
-    elseif (sp == "HP 650 Notebook PC") then chain()
-    -- HP 655 (Notebook)
-    elseif (sp == "HP 655 Notebook PC") then chain()
-    -- HP Compaq 610 (Notebook)
-    elseif (sp == "Compaq 610") then chain()
-    -- HP d530 (Desktop PC)
-    elseif (sp == "HP d530 SFF(DC578AV)") then chain()
-    -- HP d530 (Desktop PC)
-    elseif (sp == "HP d530 SFF(DG781A)") then chain()
-    -- HP EliteBook 6930p (Notebook)
-    elseif (sp == "HP EliteBook 6930p") then chain()
-    -- HP Pavilion g6 (Notebook)
-    elseif (sp == "HP Pavilion g6 Notebook PC") then chain()
-    end
-
-  -- Lenovo
-  elseif (sm == "LENOVO") then
-    if (false) then
-    -- Lenovo B580 (Notebook)
-    elseif (sv == "Lenovo B580") then chain()
-    -- Lenovo Ideapad S10-2 (Notebook)
-    elseif (sv == "Lenovo IdeaPad S10-2") then chain()
-    -- Lenovo ThinkCentre E73 (Desktop PC)
-    elseif (sv == "ThinkCentre E73") then chain()
-    -- Lenovo ThinkCentre Edge72 (Desktop PC)
-    elseif (sv == "ThinkCentre Edge72") then chain()
-    -- Lenovo ThinkCentre M57 (Desktop PC)
-    elseif (sv == "ThinkCentre M57") then chain()
-    -- Lenovo ThinkCentre M72e (Desktop PC)
-    elseif (sv == "ThinkCentre M72e") then chain()
-    -- Lenovo ThinkCentre M73 (Desktop PC)
-    elseif (sv == "ThinkCentre M73") then chain()
-    -- Lenovo ThinkCentre M81 (Desktop PC)
-    elseif (sv == "ThinkCentre M81") then chain()
-    -- Lenovo ThinkCentre M81 (Desktop PC)
-    elseif (sp == "5049") then chain()
-    -- Lenovo ThinkCentre M82 (Desktop PC)
-    elseif (sv == "ThinkCentre M82") then chain()
-    -- Lenovo ThinkCentre M82 (Desktop PC)
-    elseif (sp == "2697") then chain()
-    -- Lenovo ThinkCentre M82 (Desktop PC)
-    elseif (sp == "2697B63") then chain()
-    -- Lenovo ThinkCentre M82 (Desktop PC)
-    elseif (sp == "2929") then chain()
-    -- Lenovo ThinkCentre M83 (Desktop PC)
-    elseif (sp == "ThinkCentre M83") then chain()
-    -- Lenovo ThinkCentre M83 (Desktop PC)
-    elseif (sp == "10AH") then chain()
-    -- Lenovo ThinkCentre M92 (Desktop PC)
-    elseif (sv == "ThinkCentre M92") then chain()
-    -- Lenovo ThinkCentre M93 (Desktop PC)
-    elseif (sv == "ThinkCentre M93") then chain()
-    -- Lenovo ThinkCentre M93p (Desktop PC)
-    elseif (sv == "ThinkCentre M93p") then chain()
-    -- Lenovo ThinkPad Edge E520 (Notebook)
-    elseif (sv == "ThinkPad E520") then chain()
-    -- Lenovo ThinkPad T520 (Notebook)
-    elseif (sv == "ThinkPad T520") then chain()
-    end
-
-  -- Oracle
-  elseif (sm == "innotek GmbH") then
-    if (false) then
-    -- Oracle VirtualBox
-    --[[
-       This is a special case - VirtualBox usually works fine with LOCALBOOT,
-       but it won't work when a CD image is mounted ("Boot failed: press a key
-       to retry...." or "FATAL: INT18: BOOT FAILURE"). This usually implies
-       that we're running from ISOLINUX installed on a CD, so this exception
-       only occurs on ISOLINUX and not on PXELINUX.
-    ]]--
     elseif (sp == "VirtualBox" and
       string.find(syslinux.version(), "ISOLINUX")) then chain()
-    end
-
-  -- Samsung
-  elseif (sm == "SAMSUNG ELECTRONICS CO., LTD.") then
-    -- Samsung 300E7A-S08 (Notebook)
-    if (sp == "300E4A/300E5A/300E7A/3430EA/3530EA") then chain()
-    end
-
-  -- Toshiba
-  elseif (sm == "TOSHIBA") then
-    if (false) then
-      -- Toshiba Satellite L300D (Notebook)
-    elseif (sp == "Satellite L300D") then chain()
-      -- Toshiba Satellite Pro C660 (Notebook)
-    elseif (sp == "Satellite Pro C660") then chain()
-      -- Toshiba Satellite Pro C850-1HL (Notebook)
-    elseif (sp == "SATELLITE PRO C850-1HL") then chain()
-      -- Toshiba Satellite Pro C850-1K0 (Notebook)
-    elseif (sp == "Satellite Pro C850-1K0") then chain()
-    end
-
   end
+
+  for k, v in pairs(syst) do
+    if (strings.lower(k) == sm) then
+      for k1, v1 in pairs(v) do
+        if (strings.lower(v1) == strings.lower(sp) or strings.lower(v1) == strings.lower(sv)) 
+          then chain() 
+        end
+      end
+    end
+  end
+
+end
+
 end
 
 localboot()
