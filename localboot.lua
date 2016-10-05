@@ -58,51 +58,49 @@ then
   dmitable = dmi.gettable()
   if (dmitable.system) then
     --[[ PXELINUX 6 ]]--
-    sm = trim(dmitable.system.manufacturer)
-    sv = trim(dmitable.system.version)
-    sp = trim(dmitable.system.product_name)
+    system_manufacturer = trim(dmitable.system.manufacturer)
+    system_version = trim(dmitable.system.version)
+    system_product_name = trim(dmitable.system.product_name)
     if (dmitable.base_board) then
-      bm = trim(dmitable.base_board.manufacturer)
-      bp = trim(dmitable.base_board.product_name)
+      board_manufacturer = trim(dmitable.base_board.manufacturer)
+      board_product_name = trim(dmitable.base_board.product_name)
     end
   end
 
-syst = { 
-["Acer"] = { "Aspire 3750", "Aspire 3810T",  "Aspire 5820TG", "ASE571/AST671", "Aspire One 753", "AOA150", "Aspire XC600", "Revo 70", "TravelMate 5735Z", "Calpella", "TravelMate 5742", "TravelMate 5744", "TravelMate 5760G", "TravelMate 5760", "TravelMate 8571", "TravelMate P653-M", "AO531h", "Veriton E430G", "Veriton M2610G", "Veriton M290", "Veriton N4620G", "AOD255", "TravelMate 5740", "Veriton L460"},
-["ASUSTeK Computer INC."] = {"A8N-VM T-System-CSM", "M2N-VM DVI", "M2N-VM SE", "M4N68T-M-LE-V2", "M5A78L-M LX"},
-["ASUSTeK COMPUTER INC."] = {"H170-PRO", "B85M-E", "B85M-G", "H81M2", "H81M-K"},
-["ASUS"] = {"H81M-PLUS"},
-["bluechip Computer AG"] = {"B85M-E"},
-["Compaq"] = {"Evo D510 SFF"},
-["Dell Inc."] = {"Latitude E5520", "OptiPlex 3020", "OptiPlex 390", "OptiPlex 790", "OptiPlex 990"},
-["eMachines"] = {"eMachines E725"},
-["FUJITSU SIEMENS"] = {"ESPRIMO E", "ESPRIMO Mobile D9510", "ESPRIMO Mobile V5535"},
-["FUJITSU"] = {"ESPRIMO P5731", "ESPRIMO P910", "ESPRIMO Q510", "LIFEBOOK A512", "LIFEBOOK A530", "LIFEBOOK A531", "LIFEBOOK A532", "LIFEBOOK P702"},
-["Gigabyte Technology Co., Ltd."] = {"B75M-D3H", "EP31-DS3L", "H81M-D2W"},
-["Hewlett-Packard"] = {"HP 630 Notebook PC", "HP 635 Notebook PC", "HP 650 Notebook PC", "HP 655 Notebook PC", "Compaq 610", "HP d530 SFF(DC578AV)", "HP d530 SFF(DG781A)", "HP EliteBook 6930p", "HP Pavilion g6 Notebook PC"},
-["LENOVO"] = {"Lenovo B580", "Lenovo IdeaPad S10-2", "ThinkCentre E73", "ThinkCentre Edge72", "ThinkCentre M57", "ThinkCentre M72e", "ThinkCentre M73", "ThinkCentre M81", "5049", "ThinkCentre M82", "2697", "2697B63", "2929", "ThinkCentre M83", "10AH", "ThinkCentre M92", "ThinkCentre M93", "ThinkCentre M93p", "ThinkPad E520", "ThinkPad T520"},
-["SAMSUNG ELECTRONICS CO., LTD."]= {"300E4A/300E5A/300E7A/3430EA/3530EA"},
-["TOSHIBA"] = {"Satellite L300D", "Satellite Pro C660", "SATELLITE PRO C850-1HL", "Satellite Pro C850-1K0"}}
+  syst = { 
+  ["Acer"] = { "Aspire 3750", "Aspire 3810T",  "Aspire 5820TG", "ASE571/AST671", "Aspire One 753", "AOA150", "Aspire XC600", "Revo 70", "TravelMate 5735Z", "Calpella", "TravelMate 5742", "TravelMate 5744", "TravelMate 5760G", "TravelMate 5760", "TravelMate 8571", "TravelMate P653-M", "AO531h", "Veriton E430G", "Veriton M2610G", "Veriton M290", "Veriton N4620G", "AOD255", "TravelMate 5740", "Veriton L460"},
+  ["ASUSTeK Computer INC."] = {"A8N-VM T-System-CSM", "M2N-VM DVI", "M2N-VM SE", "M4N68T-M-LE-V2", "M5A78L-M LX"},
+  ["ASUSTeK COMPUTER INC."] = {"H170-PRO", "B85M-E", "B85M-G", "H81M2", "H81M-K"},
+  ["ASUS"] = {"H81M-PLUS"},
+  ["bluechip Computer AG"] = {"B85M-E"},
+  ["Compaq"] = {"Evo D510 SFF"},
+  ["Dell Inc."] = {"Latitude E5520", "OptiPlex 3020", "OptiPlex 390", "OptiPlex 790", "OptiPlex 990"},
+  ["eMachines"] = {"eMachines E725"},
+  ["FUJITSU SIEMENS"] = {"ESPRIMO E", "ESPRIMO Mobile D9510", "ESPRIMO Mobile V5535"},
+  ["FUJITSU"] = {"ESPRIMO P5731", "ESPRIMO P910", "ESPRIMO Q510", "LIFEBOOK A512", "LIFEBOOK A530", "LIFEBOOK A531", "LIFEBOOK A532", "LIFEBOOK P702"},
+  ["Gigabyte Technology Co., Ltd."] = {"B75M-D3H", "EP31-DS3L", "H81M-D2W"},
+  ["Hewlett-Packard"] = {"HP 630 Notebook PC", "HP 635 Notebook PC", "HP 650 Notebook PC", "HP 655 Notebook PC", "Compaq 610", "HP d530 SFF(DC578AV)", "HP d530 SFF(DG781A)", "HP EliteBook 6930p", "HP Pavilion g6 Notebook PC"},
+  ["LENOVO"] = {"Lenovo B580", "Lenovo IdeaPad S10-2", "ThinkCentre E73", "ThinkCentre Edge72", "ThinkCentre M57", "ThinkCentre M72e", "ThinkCentre M73", "ThinkCentre M81", "5049", "ThinkCentre M82", "2697", "2697B63", "2929", "ThinkCentre M83", "10AH", "ThinkCentre M92", "ThinkCentre M93", "ThinkCentre M93p", "ThinkPad E520", "ThinkPad T520"},
+  ["SAMSUNG ELECTRONICS CO., LTD."]= {"300E4A/300E5A/300E7A/3430EA/3530EA"},
+  ["TOSHIBA"] = {"Satellite L300D", "Satellite Pro C660", "SATELLITE PRO C850-1HL", "Satellite Pro C850-1K0"}}
 
 
 
-  if (sm == "innotek GmbH") then
-    if (false) then
-    elseif (sp == "VirtualBox" and
+  if (system_manufacturer == "innotek GmbH") then
+    if (system_product_name == "VirtualBox" and
       string.find(syslinux.version(), "ISOLINUX")) then chain()
+    end
   end
 
   for k, v in pairs(syst) do
-    if (strings.lower(k) == sm) then
+    if (strings.lower(k) == system_manufacturer or strings.lower(k) == board_manufacturer) then
       for k1, v1 in pairs(v) do
-        if (strings.lower(v1) == strings.lower(sp) or strings.lower(v1) == strings.lower(sv)) 
+        if (strings.lower(v1) == strings.lower(system_product_name) or strings.lower(v1) == strings.lower(system_version) or strings.lower(v1) == strings.lower(board_product_name)) 
           then chain() 
         end
       end
     end
   end
-
-end
 
 end
 
