@@ -53,18 +53,24 @@ function trim(s)
   end
 end
 
+function lower(s)
+  if (s) then
+    return string.lower(s)
+  end
+end
+
 if(dmi.supported())
 then
   -- DMI supported
   dmitable = dmi.gettable()
   if (dmitable.system) then
     --[[ PXELINUX 6 ]]--
-    system_manufacturer = trim(dmitable.system.manufacturer)
-    system_version = trim(dmitable.system.version)
-    system_product_name = trim(dmitable.system.product_name)
+    system_manufacturer = lower(trim(dmitable.system.manufacturer))
+    system_version = lower(trim(dmitable.system.version))
+    system_product_name = lower(trim(dmitable.system.product_name))
     if (dmitable.base_board) then
-      board_manufacturer = trim(dmitable.base_board.manufacturer)
-      board_product_name = trim(dmitable.base_board.product_name)
+      board_manufacturer = lower(trim(dmitable.base_board.manufacturer))
+      board_product_name = lower(trim(dmitable.base_board.product_name))
     end
   end
 
@@ -87,16 +93,18 @@ then
 
 
 
-  if (system_manufacturer == "innotek GmbH") then
-    if (system_product_name == "VirtualBox" and
+  if (system_manufacturer == lower("innotek GmbH")) then
+    if (system_product_name == lower("VirtualBox") and
       string.find(syslinux.version(), "ISOLINUX")) then chain()
     end
   end
 
   for k, v in pairs(syst) do
-    if (string.lower(k) == string.lower(system_manufacturer) or string.lower(k) == string.lower(board_manufacturer)) then
+    local lk = lower(k)
+    if (lk == system_manufacturer or lk == board_manufacturer) then
       for k1, v1 in pairs(v) do
-        if (string.lower(v1) == string.lower(system_product_name) or string.lower(v1) == string.lower(system_version) or string.lower(v1) == string.lower(board_product_name)) 
+        local lv1 = lower(v1)
+        if (lv1 == system_product_name or lv1 == system_version or lv1 == board_product_name) 
           then chain() 
         end
       end
@@ -108,3 +116,4 @@ end
 localboot()
 
 -- vim: ft=lua
+
