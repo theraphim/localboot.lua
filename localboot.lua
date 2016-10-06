@@ -24,6 +24,7 @@
 
 local dmi = require "dmi"
 local syslinux = require "syslinux"
+local string = require "string"
 
 function localboot()
   print("localboot.lua: localboot")
@@ -93,9 +94,9 @@ then
   end
 
   for k, v in pairs(syst) do
-    if (strings.lower(k) == system_manufacturer or strings.lower(k) == board_manufacturer) then
+    if (string.lower(k) == string.lower(system_manufacturer) or string.lower(k) == string.lower(board_manufacturer)) then
       for k1, v1 in pairs(v) do
-        if (strings.lower(v1) == strings.lower(system_product_name) or strings.lower(v1) == strings.lower(system_version) or strings.lower(v1) == strings.lower(board_product_name)) 
+        if (string.lower(v1) == string.lower(system_product_name) or string.lower(v1) == string.lower(system_version) or string.lower(v1) == string.lower(board_product_name)) 
           then chain() 
         end
       end
