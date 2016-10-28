@@ -87,6 +87,7 @@ then
   ["FUJITSU"] = {"ESPRIMO P5731", "ESPRIMO P910", "ESPRIMO Q510", "LIFEBOOK A512", "LIFEBOOK A530", "LIFEBOOK A531", "LIFEBOOK A532", "LIFEBOOK P702"},
   ["Gigabyte Technology Co., Ltd."] = {"B75M-D3H", "EP31-DS3L", "H81M-D2W"},
   ["Hewlett-Packard"] = {"HP 630 Notebook PC", "HP 635 Notebook PC", "HP 650 Notebook PC", "HP 655 Notebook PC", "Compaq 610", "HP d530 SFF(DC578AV)", "HP d530 SFF(DG781A)", "HP EliteBook 6930p", "HP Pavilion g6 Notebook PC"},
+  ["Intel Corporation"] = {"DG33BU"},
   ["LENOVO"] = {"Lenovo B580", "Lenovo IdeaPad S10-2", "ThinkCentre E73", "ThinkCentre Edge72", "ThinkCentre M57", "ThinkCentre M72e", "ThinkCentre M73", "ThinkCentre M81", "5049", "ThinkCentre M82", "2697", "2697B63", "2929", "ThinkCentre M83", "10AH", "ThinkCentre M92", "ThinkCentre M93", "ThinkCentre M93p", "ThinkPad E520", "ThinkPad T520"},
   ["SAMSUNG ELECTRONICS CO., LTD."]= {"300E4A/300E5A/300E7A/3430EA/3530EA"},
   ["TOSHIBA"] = {"Satellite L300D", "Satellite Pro C660", "SATELLITE PRO C850-1HL", "Satellite Pro C850-1K0"}}
